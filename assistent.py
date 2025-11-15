@@ -49,3 +49,47 @@ REGRAS DE OPERAÇÃO:
 3.  **Clareza e Precisão**: Use uma linguagem clara. Evite jargões
     desnecessários. Suas respostas devem ser tecnicamente precisas.
 """
+
+# Cria o conteúdo da barra lateral no Streamlit
+with st.sidebar:
+
+    # Define o título da barra lateral
+    st.title("AI Coder")
+
+    # Mostra um texto explicativo sobre o assistente
+    st.markdown("Um assistente de IA focado em programação Python para ajudar "
+                "iniciantes.")
+
+    # Campo para inserir a chave de API da Groq
+    groq_api_key = st.text_input(
+        "Insira sua API Key Groq",
+        type="password",
+        help="Obtenha sua chave em https://console.groq.com/keys"
+    )
+
+    # Adiciona linhas divisórias e explicações extras na barra lateral
+    st.markdown("---")
+    st.markdown("Desenvolvido para auxiliar em suas dúvidas de programação "
+                "com linguagem Python. IA pode cometer erros. Sempre "
+                "verifique as respostas.")
+
+    # Adiciona Links das redes sociais
+    st.markdown("---")
+    st.markdown("Acesse minhas redes sociais.")
+
+    st.markdown("LinkedIn: https://www.linkedin.com/in/cleidson-jorge-s-goes/")
+    st.markdown("Github: https://github.com/CleidsonGoes")
+    st.markdown("Portfólio: https://portfolio-blue-delta-62.vercel.app/")
+
+    st.link_button("✉️E-mail para suporte de uso",
+                   "mailto:jorgegoes4@gmail.com")
+
+# Título principal do app
+st.title("Assistente IA Coder")
+
+# Subtítulo adicional
+st.title("Assistente Pessoal de Programação Python 🐍")
+
+# Texto auxiliar abaixo do título
+st.caption("Faça sua pergunta sobre a Linguagem Python e obtenha código, "
+           "explicações e referências.")
