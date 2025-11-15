@@ -10,7 +10,9 @@ import streamlit as st
 # Importa a classe Groq para se conectar à API da plaforma Groq e acessar o LLM
 from groq import Groq
 
-# Configura a página do Streamlit com título, ícone, layout e estado inicial da sidebar
+# Configura a página do Streamlit com título, ícone, layout e estado inicial
+# da sidebar
+
 st.set_page_config(
     page_title="AI Coder",
     page_icon="",
@@ -93,3 +95,12 @@ st.title("Assistente Pessoal de Programação Python 🐍")
 # Texto auxiliar abaixo do título
 st.caption("Faça sua pergunta sobre a Linguagem Python e obtenha código, "
            "explicações e referências.")
+
+# Inicializa o histórico de mensagens na sessão, caso ainda não exista
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+# Exibe todas as mensagens anteriores armazenadas no estado da sessão
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
