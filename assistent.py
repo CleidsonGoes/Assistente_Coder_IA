@@ -104,3 +104,23 @@ if "messages" not in st.session_state:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+
+# Inicializa a variável do cliente Groq como None
+client = None
+
+# Verifica se o usuário forneceu a chave de API da Groq
+if groq_api_key:
+    try:
+        # Cria client Groq com a chave de API fornecida
+        client = Groq(api_key=groq_api_key)
+
+    except Exception as e:
+
+        # Exibe erro caso haja problema ao inicializar cliente
+        st.sidebar.error(f"Erro ao inicializar o cliente Groq: {e}")
+        st.stop()
+
+# Caso não tenha chave, mas já existam mensagens, mostra aviso
+elif st.session_state.messages:
+    st.warning("Por favor, insira sua API Key da Groq na barra lateral para"
+               "continuar.")
