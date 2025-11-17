@@ -106,13 +106,13 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Inicializa a variável do cliente Groq como None
-client = None
+CLIENT = None
 
 # Verifica se o usuário forneceu a chave de API da Groq
 if groq_api_key:
     try:
         # Cria client Groq com a chave de API fornecida
-        client = Groq(api_key=groq_api_key)
+        CLIENT = Groq(api_key=groq_api_key)
 
     except Exception as e:
 
@@ -128,7 +128,7 @@ elif st.session_state.messages:
 if prompt := st.chat_input("Qual sua dúvida sobre Python"):
 
     # Se não houver cliente válido, mostra aviso e para a execução
-    if not client:
+    if not CLIENT:
         st.warning("Por favor, insira sua API Key da Groq na barra lateral "
                    "para começar.")
         st.stop()
@@ -154,7 +154,7 @@ if prompt := st.chat_input("Qual sua dúvida sobre Python"):
             try:
 
                 # Chama a API da Groq para gerar a resposta do assistente
-                chat_completion = client.chat.completions.create(
+                chat_completion = CLIENT.chat.completions.create(
                     messages=messages_for_api,
                     model="openai/gpt-oss-20b",
                     temperature=0.7,
